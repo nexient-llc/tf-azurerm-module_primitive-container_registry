@@ -5,6 +5,7 @@ import (
 	"path"
 	"testing"
 
+	"github.com/gruntwork-io/terratest/modules/azure"
 	"github.com/gruntwork-io/terratest/modules/files"
 	"github.com/gruntwork-io/terratest/modules/terraform"
 	test_structure "github.com/gruntwork-io/terratest/modules/test-structure"
@@ -82,9 +83,13 @@ func (suite *TerraTestSuite) TestOutput() {
 	}
 	var container_registry ContainerRegisty
 	terraform.OutputStruct(suite.T(), suite.TerraformOptions, "container_registry", &container_registry)
-	suite.Equal(container_registry.AdminUsername, "nexientacr000")
+	expectedRegistryName := "nexientacr000"
+	expectedRgName := "deb-test-devops"
+	// NOTE: "subscriptionID" is overridden by the environment variable "ARM_SUBSCRIPTION_ID". <>
+	subscriptionID := ""
+	suite.Equal(container_registry.AdminUsername, expectedRegistryName)
+	suite.Equal(container_registry.ResourceGroupName, expectedRgName)
 	suite.Equal(container_registry.AdminEnabled, true)
-	// Below is not working. My code gets hung
-	// containerRegistryExists := azure.ContainerRegistryExists(suite.T(), "nexientacr000", "deb-test-devops", "5d26bcb0-7db7-41ce-ba3f-f6ae4744d331")
-	// suite.Equal(containerRegistryExists, true)
+	containerRegistryExists := azure.ContainerRegistryExists(suite.T(), expectedRegistryName, expectedRgName, subscriptionID)
+	suite.True(containerRegistryExists)
 }
