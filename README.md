@@ -1,4 +1,4 @@
-# tf-az-module-container_registry
+# tf-azurerm-module-container_registry
 
 ## Overview
 
