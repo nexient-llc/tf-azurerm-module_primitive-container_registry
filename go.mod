@@ -1,4 +1,4 @@
-module github.com/nexient-llc/tf-azure-container-registry
+module github.com/nexient-llc/tf-azurerm-module-container_registry
 
 go 1.15
 
