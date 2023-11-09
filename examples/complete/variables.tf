@@ -47,3 +47,15 @@ variable "container_registry" {
     sku           = "Basic"
   }
 }
+
+variable "retention_policy" {
+  description = "Set a retention policy for untagged manifests"
+  type = object({
+    days    = optional(number)
+    enabled = optional(bool)
+  })
+  default = {
+    days    = 1
+    enabled = true
+  }
+}

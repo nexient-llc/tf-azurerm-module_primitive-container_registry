@@ -34,4 +34,8 @@ module "container_registry" {
     admin_enabled = var.container_registry.admin_enabled
     sku           = var.container_registry.sku
   }
+  retention_policy = {
+    days    = var.retention_policy.days
+    enabled = var.retention_policy.enabled
+  }
 }

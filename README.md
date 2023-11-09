@@ -99,7 +99,7 @@ If `make check` target is successful, developer is good to commit the code to pr
 
 | Name | Version |
 |------|---------|
-| <a name="requirement_terraform"></a> [terraform](#requirement\_terraform) | <= 1.5.5 |
+| <a name="requirement_terraform"></a> [terraform](#requirement\_terraform) | >= 1.5.5 |
 | <a name="requirement_azurerm"></a> [azurerm](#requirement\_azurerm) | >=3.77.0 |
 
 ## Providers
@@ -127,11 +127,17 @@ No modules.
 | <a name="input_container_registry_name"></a> [container\_registry\_name](#input\_container\_registry\_name) | Container Registry name. | `string` | `"nexientacr000"` | no |
 | <a name="input_container_registry"></a> [container\_registry](#input\_container\_registry) | Required and important input variables for the container registry | <pre>object({<br>    admin_enabled = bool<br>    sku           = string<br>  })</pre> | <pre>{<br>  "admin_enabled": true,<br>  "sku": "Basic"<br>}</pre> | no |
 | <a name="input_tags"></a> [tags](#input\_tags) | Custom tags for the  container registry | `map(string)` | `{}` | no |
+| <a name="input_retention_policy"></a> [retention\_policy](#input\_retention\_policy) | Set a retention policy for untagged manifests | <pre>object({<br>    days    = optional(number)<br>    enabled = optional(bool)<br>  })</pre> | `null` | no |
+| <a name="input_identity_ids"></a> [identity\_ids](#input\_identity\_ids) | Specifies a list of user managed identity ids to be assigned. This is required when `type` is set to `UserAssigned` or `SystemAssigned, UserAssigned` | `list(string)` | `null` | no |
+| <a name="input_encryption"></a> [encryption](#input\_encryption) | Encrypt registry using a customer-managed key | <pre>object({<br>    key_vault_key_id   = string<br>    identity_client_id = string<br>  })</pre> | `null` | no |
 
 ## Outputs
 
 | Name | Description |
 |------|-------------|
-| <a name="output_container_registry"></a> [container\_registry](#output\_container\_registry) | n/a |
 | <a name="output_container_registry_id"></a> [container\_registry\_id](#output\_container\_registry\_id) | The ID of the Container Registry |
+| <a name="output_container_registry_login_server"></a> [container\_registry\_login\_server](#output\_container\_registry\_login\_server) | The login server of the Container Registry |
+| <a name="output_container_registry_admin_username"></a> [container\_registry\_admin\_username](#output\_container\_registry\_admin\_username) | The admin username of the Container Registry |
+| <a name="output_container_registry_admin_password"></a> [container\_registry\_admin\_password](#output\_container\_registry\_admin\_password) | The admin password of the Container Registry |
+| <a name="output_container_registry_admin_enabled"></a> [container\_registry\_admin\_enabled](#output\_container\_registry\_admin\_enabled) | The admin enable of the Container Registry |
 <!-- END OF PRE-COMMIT-TERRAFORM DOCS HOOK -->

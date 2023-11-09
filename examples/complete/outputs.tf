@@ -14,9 +14,3 @@ output "container_registry_id" {
   description = "The id of the Container Registry"
   value       = module.container_registry.container_registry_id
 }
-
-output "container_registry" {
-  description = "Container Registry details"
-  value       = module.container_registry.container_registry
-  sensitive   = true
-}
