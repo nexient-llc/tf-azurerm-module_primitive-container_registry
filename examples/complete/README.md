@@ -31,7 +31,6 @@ No requirements.
 | <a name="input_naming_prefix"></a> [naming\_prefix](#input\_naming\_prefix) | Prefix for the provisioned resources. | `string` | `"platform"` | no |
 | <a name="input_managed_by"></a> [managed\_by](#input\_managed\_by) | (Optional) The ID of the resource that manages this resource group. | `string` | `null` | no |
 | <a name="input_container_registry"></a> [container\_registry](#input\_container\_registry) | Required and important input variables for the container registry | <pre>object({<br>    admin_enabled = bool<br>    sku           = string<br>  })</pre> | <pre>{<br>  "admin_enabled": true,<br>  "sku": "Basic"<br>}</pre> | no |
-| <a name="input_retention_policy"></a> [retention\_policy](#input\_retention\_policy) | Set a retention policy for untagged manifests | <pre>object({<br>    days    = optional(number)<br>    enabled = optional(bool)<br>  })</pre> | <pre>{<br>  "days": 1,<br>  "enabled": true<br>}</pre> | no |
 
 ## Outputs
 
