@@ -8,6 +8,10 @@ output "container_registry_login_server" {
   value       = azurerm_container_registry.acr.login_server
 }
 
+output "container_registry_name" {
+  description = "Name of the Container Registry"
+  value       = azurerm_container_registry.acr.name
+}
 
 output "container_registry_admin_username" {
   description = "The admin username of the Container Registry"

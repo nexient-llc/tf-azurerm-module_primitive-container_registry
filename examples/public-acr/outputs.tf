@@ -14,3 +14,19 @@ output "container_registry_id" {
   description = "The id of the Container Registry"
   value       = module.container_registry.container_registry_id
 }
+
+output "container_registry_name" {
+  value = module.container_registry.container_registry_name
+}
+
+output "acr_server_name" {
+  value = module.container_registry.container_registry_login_server
+}
+
+output "resource_group_id" {
+  value = module.resource_group.id
+}
+
+output "resource_group_name" {
+  value = module.resource_group.name
+}
